@@ -29,7 +29,7 @@ export async function getStaticPaths() {
   const result = await meetupsCollection.find({}, { _id: 1 }).toArray();
   client.close();
   return {
-    fallback: false,
+    fallback: 'blocking',
     paths: result.map((meetup) => ({
       params: { meetupID: meetup._id.toString() },
     })),
